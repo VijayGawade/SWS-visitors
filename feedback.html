@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<link
+			rel="shortcut icon"
+			href="images/smart-logo2.jpg"
+			type="image/x-icon"
+		/>
+
+		<!-- BootstrapCDN  -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script src="js/popper.min.js"></script>
+
+		<!-- SweetAlert CDN -->
+		<script src="js/sweetalert.min.js"></script>
+
+		<!-- Custom CSS for page -->
+		<link rel="stylesheet" type="text/css" href="css/myStyle.css" />
+		<!-- comment smily -->
+	</head>
+
+	<body>
+		<div class="jumbotron jumbotron-fluid" style="margin: 0px;padding: 0px;">
+			<div class="container">
+				<div class="row">
+					<div class="col-*-4">
+						<img
+							src="images/sws.png"
+							class="logo"
+							alt="Smart Washroom System"
+						/>
+					</div>
+					<div class="col-*-8">
+						<h1>Smart Washroom System</h1>
+					</div>
+				</div>
+			</div>
+			<br />
+		</div>
+		<div class="container" style="margin-bottom: 40px;">
+			<h3>Please Give your Feedback</h3>
+			<div class="row">
+				<div class="column">
+					<img
+						src="images/Good.png"
+						alt="Snow"
+						style="width:100%;"
+						onclick="sendRating(1);"
+					/>
+				</div>
+				<div class="column">
+					<img
+						src="images/Neutral.png"
+						alt="Forest"
+						style="width:100%"
+						onclick="sendRating(2);"
+					/>
+				</div>
+				<div class="column">
+					<img
+						src="images/Bad.png"
+						alt="Mountains"
+						style="width:100%"
+						onclick="sendRating(3);"
+					/>
+				</div>
+			</div>
+			<div class="row" style="vertical-align: middle; font-size: 200%;">
+				<p>Have Comment ?</p>
+				<button
+					type="button"
+					class="btn btn-link"
+					data-toggle="modal"
+					data-target="#commentModal"
+				>
+					Click here
+				</button>
+			</div>
+		</div>
+
+		<!-- The Modal -->
+		<div class="modal" id="commentModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Give Feedback</h4>
+						<button
+							type="button"
+							class="close"
+							id="close"
+							data-dismiss="modal"
+							onclick="$('#haveComplaints').bootstrapToggle('off');return closePage()"
+						>
+							&times;
+						</button>
+					</div>
+
+					<form
+						method="POST"
+						action="http://localhost:9090/submit-feedback"
+						id="feedbackForm"
+					>
+						<input type="hidden" name="wid" id="washroom_id" value="642" />
+						<!-- Modal body -->
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-10 col-sm-10 col-md-10">
+									<h3>Please select feedback category:</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-10 col-sm-10 col-md-10">
+									<!-- Default inline 1-->
+									<div
+										class="custom-control custom-radio custom-control-inline"
+									>
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="suggestions"
+											name="feedbackType"
+											value="1"
+										/>
+										<label class="custom-control-label" for="suggestions"
+											>Suggestions</label
+										>
+									</div>
+									<!-- Default inline 2-->
+									<div
+										class="custom-control custom-radio custom-control-inline"
+									>
+										<input
+											type="radio"
+											class="custom-control-input"
+											id="complaints"
+											name="feedbackType"
+											value="2"
+										/>
+										<label class="custom-control-label" for="complaints"
+											>Complaints</label
+										>
+									</div>
+								</div>
+							</div>
+							<br />
+							<div class="row">
+								<div class="col-xs-10 col-sm-10 col-md-10">
+									<div class="form-group">
+										<label for="comment">Comment:</label>
+										<textarea
+											class="form-control"
+											rows="5"
+											name="desc"
+											id="desc"
+										></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<input
+								type="submit"
+								id="submitButtonclick"
+								value="Submit"
+								class="btn btn-primary"
+							/>
+							<button
+								type="button"
+								id="closeButtonclick"
+								class="btn btn-danger"
+								data-dismiss="modal"
+							>
+								Close
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<p>
+				Created by Harman Connected Services
+			</p>
+		</footer>
+		<script type="text/javascript" src="js/sendData.js"></script>
+	</body>
+</html>
